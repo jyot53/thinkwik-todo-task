@@ -41,6 +41,8 @@ Follow these steps to run the application successfully:
   cd server
   ```
 
+- Create a .env file in server folder and copy the contents of .env.sample into it.
+
 - Install server dependencies.
   ```
   npm install
@@ -56,3 +58,10 @@ Follow these steps to run the application successfully:
 ## Summary
 
 This MERN (MongoDB, ExpressJS, ReactJS, NodeJS) stack application is organized into separate frontend and backend folders. Follow the steps outlined above to set up and run the application. The client runs on [http://localhost:3000](http://localhost:3000), and the server runs on [http://localhost:8000](http://localhost:8000).
+
+## Sample User Information
+{
+  "email":"temp123@gmail.com",
+  "username":"temp123",
+  "password":"temp123"
+}

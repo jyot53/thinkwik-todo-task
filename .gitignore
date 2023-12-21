@@ -40,3 +40,6 @@ next-env.d.ts
 /.vscode/
 vscode
 .vscode
+
+/client/node_modules/
+/server/node_modules/
