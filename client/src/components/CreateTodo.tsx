@@ -16,7 +16,7 @@ const validationSchema = Yup.object({
 const initialValues = {
     title: '',
     description: '',
-    isCompleted: false,
+    isCompleted: "false",
     dueDate: new Date(),
   }
 
@@ -25,7 +25,8 @@ const CreateTodo = () => {
     const id = toast.loading("Please wait while updating the todo...");
     try {
       const headers = getHeaders();
-      const response = await axios.post(`/todos`, formData,{
+      let bodyData = {...formData, isCompleted:formData.isCompleted === "true"}
+      const response = await axios.post(`/todos`, bodyData,{
         headers,
       });
       const data = response.data;
@@ -69,22 +70,22 @@ const CreateTodo = () => {
           <div>
             <label htmlFor="title">Title:</label>
             <Field type="text" id="title" name="title" />
-            <ErrorMessage name="title" component="div" />
+            <ErrorMessage name="title" component="div" className="error-message-create"/>
           </div>
 
           <div>
             <label htmlFor="description">Description:</label>
             <Field as="textarea" id="description" name="description" />
-            <ErrorMessage name="description" component="div" />
+            <ErrorMessage name="description" component="div" className="error-message-create" />
           </div>
 
           <div>
             <label>
               Completed:
-              <Field type="radio" name="isCompleted" value={true} /> Yes
-              <Field type="radio" name="isCompleted" value={false} /> No
+              <Field type="radio" name="isCompleted" value={"true"} /> Yes
+              <Field type="radio" name="isCompleted" value={"false"} /> No
             </label>
-            <ErrorMessage name="isCompleted" component="div" />
+            <ErrorMessage name="isCompleted" component="div" className="error-message-create"/>
           </div>
 
           <div>
