@@ -85,7 +85,7 @@ const getAllTodosByUserId = async (req,res) => {
         const query = { //creating an query object based on parameters
             user: user?._id
         };
-        if (completed !== undefined) {
+        if (completed !== undefined && completed !== "all") {
             query.isCompleted = completed === 'true';
         }
 

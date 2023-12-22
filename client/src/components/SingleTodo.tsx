@@ -63,13 +63,34 @@ const SingleTodo = ({ todo }: { todo: Todo }) => {
   };
 
   return (
-    <div>
+    <div style={{
+        border:"2px solid grey",
+        width:"fit-content",
+        borderRadius:"1rem",
+        padding:"0.5rem",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        backgroundColor:"#d3d3d3",
+        flexDirection:"column",
+        marginTop:"2rem",
+        marginBottom:"2rem"
+    }}>
       <h1>{todo.title}</h1>
       <p>{todo.description}</p>
-      <p>{todo.isCompleted ? "Completed" : "Pending"}</p>
+      <p style={{
+        color:`${todo.isCompleted ? 'green' : 'red'}`
+        }}>{todo.isCompleted ? "Completed" : "Pending"}</p>
       <p>Due Date - {getTodoDateFormatted(todo.dueDate)}</p>
-      <button onClick={onTodoDelete}>Delete</button>
-      <button onClick={onTodoEdit}>Edit</button>
+      <div style={{
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        gap:"2rem"
+      }}>
+        <button onClick={onTodoDelete}>Delete</button>
+        <button onClick={onTodoEdit}>Edit</button>
+      </div>
     </div>
   );
 };

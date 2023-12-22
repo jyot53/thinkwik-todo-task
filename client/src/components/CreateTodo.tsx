@@ -58,6 +58,8 @@ const CreateTodo = () => {
   };
 
   return (
+    <>
+    <h1>Create an new Todo</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -103,6 +105,7 @@ const CreateTodo = () => {
           <button type="submit">Save Changes</button>
         </Form>
       </Formik>
+      </>
     )
 };
 

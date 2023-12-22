@@ -17,7 +17,7 @@ const validationSchema = Yup.object({
 const Edit = () => {
   const navigate = useNavigate();
   const { todoId } = useParams();
-  const [todo, setTodo] = useState<Todo | null>(null);
+  const [todo, setTodo] = useState<any | null>(null);
 
   useEffect(() => {
     const getSingleTodo = async () => {
@@ -41,7 +41,7 @@ const Edit = () => {
           setTodo({
             title: info.title,
             description: info.description,
-            isCompleted: info.isCompleted,
+            isCompleted: info.isCompleted ? "true" : "false",
             id: info._id,
             dueDate: info.dueDate,
           });
@@ -72,7 +72,8 @@ const Edit = () => {
     const id = toast.loading("Please wait while updating the todo...");
     try {
       const headers = getHeaders();
-      const response = await axios.put(`/todos/${todoId}`, formData,{
+      let bodyData = {...formData, isCompleted:formData.isCompleted === "true"};
+      const response = await axios.put(`/todos/${todoId}`, bodyData ,{
         headers,
       });
       const data = response.data;
@@ -109,29 +110,57 @@ const Edit = () => {
 
   return (
     todo && (
-      <Formik
+      <div
+        style={{
+            display: 'flex',
+            alignItems:"center",
+            justifyContent:"start",
+            width:'100%',
+            flexDirection:"column",
+        }}
+      >
+        <h1>Edit your Todo :- </h1>
+        <Formik
         initialValues={todo}
         validationSchema={validationSchema}
         onSubmit={onTodoSave}
       >
         <Form>
-          <div>
+          <div style={{
+             display: 'flex',
+             alignItems:"center",
+             justifyContent:"start",
+             gap:"1rem",
+             marginBottom:"2rem",
+          }}>
             <label htmlFor="title">Title:</label>
             <Field type="text" id="title" name="title" />
             <ErrorMessage name="title" component="div" />
           </div>
 
-          <div>
+          <div style={{
+            display: 'flex',
+            alignItems:"center",
+            justifyContent:"start",
+            gap:"1rem",
+            marginBottom:"2rem"
+          }}>
             <label htmlFor="description">Description:</label>
-            <Field as="textarea" id="description" name="description" />
+            <Field as="textarea" id="description" name="description" rows="10" cols="40" />
             <ErrorMessage name="description" component="div" />
           </div>
 
-          <div>
+          <div style={{
+            display: 'flex',
+            alignItems:"center",
+            justifyContent:"start",
+            gap:"1rem",
+            marginBottom:"2rem"
+          }}>
             <label>
               Completed:
-              <Field type="radio" name="isCompleted" value={true} /> Yes
-              <Field type="radio" name="isCompleted" value={false} /> No
+              <Field type="radio" name="isCompleted" value={"true"} /> Yes
+              <Field type="radio" name="isCompleted" value={"false"} /> No
             </label>
             <ErrorMessage name="isCompleted" component="div" />
           </div>
@@ -139,6 +168,7 @@ const Edit = () => {
           <button type="submit">Save Changes</button>
         </Form>
       </Formik>
+      </div>
     )
   );
 };

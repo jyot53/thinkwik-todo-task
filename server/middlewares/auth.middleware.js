@@ -25,21 +25,6 @@ const verifyJWT = async(req, res, next) => {
     }
 }
 
-// const loggedOutRouteOnly = async (req, res,next) => {
-//     try {
-//         const user = req.user;
-//         console.log(user);
-//         if(user){
-//             return res.status(401).json({success:false, message:"User already logged-in",data:null});
-//         }
-//         next();
-//     } catch (error) {
-//         console.log(error);
-//         return res.status(500).json({success:false, message:"Internal Server Error - loggedOutRouteOnly",data:null});
-//     }
-// }
-
 module.exports = {
-    verifyJWT,
-    // loggedOutRouteOnly
+    verifyJWT
 };

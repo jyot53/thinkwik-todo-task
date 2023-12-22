@@ -5,7 +5,6 @@ import { getHeaders } from "../utils/platform";
 import { Todo } from "../typings";
 import SingleTodo from "./SingleTodo";
 import CreateTodo from "./CreateTodo";
-
 const Todos = () => {
   const [todos, setTodos] = useState<Todo[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +14,7 @@ const Todos = () => {
   const [sortBy, setSortBy] = useState("createdAt"); // Default sorting by createdAt
   const [sortOrder, setSortOrder] = useState("desc"); // Default sorting order
   // Filtering
-  const [completedFilter, setCompletedFilter] = useState("");
+  const [completedFilter, setCompletedFilter] = useState("all");
 
   const [isInFlight, setIsInFlight] = useState(false);
 
@@ -91,11 +90,11 @@ const Todos = () => {
 
   return (
     <div>
-      <h1>Your Todos</h1>
+      <CreateTodo />
       {todos?.length ? (
         <>
             <div>
-                <h3>Filtering options :- </h3>
+                <h1>Filtering options :- </h1>
                 <button onClick={() => setPage(prevPage => (parseInt(prevPage) - 1).toString()) } disabled={parseInt(page) === 1}>
                 Previous Page
                 </button>
@@ -131,7 +130,7 @@ const Todos = () => {
                         value={completedFilter}
                         onChange={(e) => setCompletedFilter(e.target.value)}
                     >
-                        <option value="">All</option>
+                        <option value="all">All</option>
                         <option value="true">Completed</option>
                         <option value="false">Not Completed</option>
                     </select>
@@ -139,15 +138,15 @@ const Todos = () => {
                 </div>
             </div>
             <div>
+            <h1>Your Todos</h1>
             {todos?.map((todo: Todo) => (
-                <SingleTodo todo={todo} />
+                <SingleTodo key={todo.id} todo={todo} />
                 ))}
             </div>
         </>
       ) : (
         <h4>You have not created any todo</h4>
       )}
-      <CreateTodo />
     </div>
   );
 };

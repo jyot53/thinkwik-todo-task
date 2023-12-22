@@ -1,6 +1,7 @@
 import { shortMonths } from "./constants";
 
 export const getTodoDateFormatted = (date:Date) => {
+    date = new Date(date);
     const day = date.getDate();
     const month = date.getMonth();
     const year = date.getFullYear();

@@ -7,6 +7,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { getHeaders } from "../utils/platform";
 
+
 const Login = () => {
   const { user, login } = useAuth();
   const navigate = useNavigate();
@@ -96,6 +97,7 @@ const Login = () => {
           <button type="submit">Login</button>
         </Form>
       </Formik>
+      <button onClick={() => navigate('/register')}>Don't have an account?</button>
     </div>
   );
 };

@@ -48,9 +48,17 @@ export const Home = () => {
   }
 
   return (
-    <div>
-        <p>Welcome {user?.username}</p>
-        <button onClick={onLogout}>Logout</button>
+    <div style={{
+        padding: "3rem"
+    }}>
+        <div style={{
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"space-around",
+        }}>
+            <h1>Welcome {user?.username} to the todos app!!!</h1>
+            <button onClick={onLogout}>Logout</button>
+        </div>
         <Todos/>
     </div>
   )

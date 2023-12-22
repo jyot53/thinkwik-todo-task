@@ -102,6 +102,7 @@ const Register = () => {
           <button type="submit">Register</button>
         </Form>
       </Formik>
+      <button onClick={() => navigate('/login')}>Already have an account?</button>
     </div>
   );
 };
