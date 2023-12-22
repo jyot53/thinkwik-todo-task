@@ -47,6 +47,9 @@ const updateTodo = async (req,res) => {
             return res.status(401).json({success: false, message:"Invalid Todo Id", data:null});
         }
         const updatedTodo = await Todo.findByIdAndUpdate(todoId, req.body, { new: true });
+        if(!updatedTodo){
+            return res.status(401).json({success: false, message:"Invalid Todo Id", data:null});
+        }
         return res.status(200).json({success: true, message:"Todo updated successfully", data:updatedTodo});
     } catch (error) {
         console.error(error);
@@ -60,7 +63,10 @@ const deleteTodo = async (req,res) => {
         if(!todoId){
             return res.status(401).json({success: false, message:"Invalid Todo Id", data:null});
         }
-        await Todo.findByIdAndDelete(todoId);
+        const deletedTodo = await Todo.findByIdAndDelete(todoId);
+        if(!deletedTodo) {
+            return res.status(401).json({success: false, message:"Invalid Todo ID", data:null});
+        }
         return res.status(200).json({success: true, message:"Todo deleted successfully", data:null});
     } catch (error) {
         console.error(error);
