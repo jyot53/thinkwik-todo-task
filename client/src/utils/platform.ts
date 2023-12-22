@@ -8,7 +8,7 @@ export const isLoggedIn = () => {
     return !!getClientCookie(TOKEN_NAME);
 }
 
-export const getHeaders = (forceAuth:boolean) => {
+export const getHeaders = (forceAuth:boolean = false) => {
     const headers:any = {};
     if(forceAuth || isLoggedIn()) {
         headers['Authorization'] = 'Bearer ' + getToken();
@@ -23,7 +23,7 @@ export const getClientCookie = (cname:string) => {
         let c, x;
         for (let i = 0; i < ca.length; i++) {
             c = ca[i];
-            x = ca[i].split('=');
+            x = c.split('=');
             if (x[0].trim() === cname) {
             return x.slice(1).join('') || '';
             }

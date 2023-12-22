@@ -7,18 +7,21 @@ import Register from './components/Register';
 import Edit from './components/Edit';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './auth/ProtectedRoute';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <AuthProvider>
-        <Routes>
-          {/* public routes */}
-          <Route path='/login' element={<Login/>}/>  
-          <Route path='/register' element={<Register/>}/>
+      <ToastContainer/>
+      <Routes>
+        {/* public routes */}
+        <Route path='/login' element={<Login/>}/>  
+        <Route path='/register' element={<Register/>}/>
 
-          {/* protected routes: */}
-          <Route path='/' element={<ProtectedRoute component={<Home/>} />} />
-          <Route path='/edit/:todoId' element={<ProtectedRoute component={<Edit/>} />} />
+        {/* protected routes: */}
+        <Route path='/' element={<ProtectedRoute component={Home} />} />
+        <Route path='/edit/:todoId' element={<ProtectedRoute component={<Edit/>} />} />
       </Routes>
     </AuthProvider>
   );
