@@ -9,11 +9,13 @@ import CreateTodo from './CreateTodo';
 const Todos = () => {
 
     const [todos, setTodos] = useState<Todo[] | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(()=>{
         const getUserTodos = async () => {
             const id = toast.loading("Please wait while fetching your todos...");
             try {
+                setIsLoading(true);
                 const headers = getHeaders();
                 const response = await axios.get('/todos/',{
                     headers
@@ -56,6 +58,8 @@ const Todos = () => {
                     autoClose: 5000,
                 });
                 console.error("Todos failed:", error);
+            } finally{
+                setIsLoading(false);
             }
         };
 
@@ -63,17 +67,23 @@ const Todos = () => {
 
     },[]);
 
+    if(isLoading){
+        return (
+            <h1>Loading...</h1>
+        )
+    }
+
   return (
-    todos && <div>
+    <div>
         <h1>Your Todos</h1>
         {
-            todos?.length === 0 ? <h1>You have not created any todo</h1> : (
+            todos?.length ? (
                 <div>
-                    {todos.map((todo:Todo) => (
+                    {todos?.map((todo:Todo) => (
                          <SingleTodo todo={todo}/>
                     ))}
                 </div>
-            )
+            ) : <h4>You have not created any todo</h4>
         }
         <CreateTodo/>
     </div>
