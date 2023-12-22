@@ -81,12 +81,19 @@ const getAllTodosByUserId = async (req,res) => {
             return res.status(401).json({success: false, message:"User not found", data:null});
         }
 
-        const userTodos = await Todo.find({
-            // $where: function() {
-            //     return this.user === user?._id;
-            // }
+        const { page = 1, pageSize = 10, sortBy = 'createdAt', sortOrder = 'desc', completed } = req.query;
+        const query = { //creating an query object based on parameters
             user: user?._id
-        });
+        };
+        if (completed !== undefined) {
+            query.isCompleted = completed === 'true';
+        }
+
+        const userTodos = await Todo
+        .find(query)
+        .sort({ [sortBy]: sortOrder === 'desc' ? -1 : 1 })
+        .skip((page - 1) * pageSize)
+        .limit(parseInt(pageSize, 10));
 
         return res.status(200).json({success: true, message:"User Todo fetched successfully", data:userTodos});
 
