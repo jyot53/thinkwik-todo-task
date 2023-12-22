@@ -21,7 +21,7 @@ function App() {
 
         {/* protected routes: */}
         <Route path='/' element={<ProtectedRoute component={Home} />} />
-        <Route path='/edit/:todoId' element={<ProtectedRoute component={<Edit/>} />} />
+        <Route path='/edit/:todoId' element={<ProtectedRoute component={Edit} />} />
       </Routes>
     </AuthProvider>
   );

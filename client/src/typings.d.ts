@@ -12,5 +12,13 @@ type AuthContextProps = {
 }
 
 type AuthProviderProps = {
-children: ReactNode;
+    children: ReactNode;
+}
+
+type Todo = {
+    title:string,
+    description:string,
+    isCompleted:boolean,
+    dueDate:Date,
+    id:string
 }

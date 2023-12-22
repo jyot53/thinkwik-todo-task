@@ -28,9 +28,7 @@ const Login = () => {
   };
 
   const handleLogin = async (formData: any) => {
-    console.log("Form submitted with formData:", formData);
-    console.log(formData);
-    const id = toast.loading("Please wait...");
+    const id = toast.loading("Please wait while logging you in...");
     try {
       const headers = getHeaders();
       const response = await axios.post("/users/login", formData,{

@@ -30,9 +30,7 @@ const Register = () => {
   };
 
   const handleRegister = async (formData: any) => {
-    console.log("Form submitted with formData:", formData);
-    console.log(formData);
-    const id = toast.loading("Please wait...");
+    const id = toast.loading("Please wait while we registering you...");
     try {
       const headers = getHeaders();  
       const response = await axios.post("/users/register", formData,{
@@ -40,7 +38,6 @@ const Register = () => {
       });
       const data = response.data;
       if (data?.success) {
-        const { data: info } = data;
         toast.update(id, {
           render: data?.message || "User registered successfully, kindly login",
           type: "success",
