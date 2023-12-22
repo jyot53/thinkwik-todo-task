@@ -34,7 +34,7 @@ const CreateTodo = () => {
           render: data?.message || "Todo Created successfully",
           type: "success",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         window.location.reload();
       } else {
@@ -42,7 +42,7 @@ const CreateTodo = () => {
           render: data?.message || "Something went wrong",
           type: "error",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         console.error("Error Creating todo", data?.message);
       }
@@ -51,7 +51,7 @@ const CreateTodo = () => {
         render: error?.response?.data?.message || "Something went wrong",
         type: "error",
         isLoading: false,
-        autoClose: 5000,
+        autoClose: 2000,
       });
       console.error("Todos Creation failed:", error);
     }

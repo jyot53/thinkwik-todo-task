@@ -42,7 +42,7 @@ const Register = () => {
           render: data?.message || "User registered successfully, kindly login",
           type: "success",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         navigate("/login");
       } else {
@@ -50,7 +50,7 @@ const Register = () => {
           render: data?.message || "Something went wrong",
           type: "error",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         console.error("Error registering user", data?.message);
       }
@@ -59,7 +59,7 @@ const Register = () => {
         render: error?.response?.data?.message || "Something went wrong",
         type: "error",
         isLoading: false,
-        autoClose: 5000,
+        autoClose: 2000,
       });
       console.error("Registration failed:", error);
     }

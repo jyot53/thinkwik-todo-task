@@ -23,7 +23,7 @@ export const Home = () => {
             render: data?.message || "User logged out successfully",
             type: "success",
             isLoading: false,
-            autoClose: 5000,
+            autoClose: 2000,
           });
           logout();
           navigate("/login");
@@ -32,7 +32,7 @@ export const Home = () => {
             render: data?.message || "Something went wrong",
             type: "error",
             isLoading: false,
-            autoClose: 5000,
+            autoClose: 2000,
           });
           console.error("Error login user out", data?.message);
         }
@@ -41,7 +41,7 @@ export const Home = () => {
           render: error?.response?.data?.message || "Something went wrong",
           type: "error",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         console.error("Logout failed:", error);
       }

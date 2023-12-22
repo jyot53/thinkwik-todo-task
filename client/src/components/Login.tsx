@@ -41,7 +41,7 @@ const Login = () => {
           render: data?.message || "User logged in successfully",
           type: "success",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         login({ username: info.username, email: info.email });
         navigate("/");
@@ -50,7 +50,7 @@ const Login = () => {
           render: data?.message || "Something went wrong",
           type: "error",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         console.error("Error login user", data?.message);
       }
@@ -59,7 +59,7 @@ const Login = () => {
         render: error?.response?.data?.message || "Something went wrong",
         type: "error",
         isLoading: false,
-        autoClose: 5000,
+        autoClose: 2000,
       });
       console.error("Login failed:", error);
     }

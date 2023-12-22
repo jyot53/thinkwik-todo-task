@@ -22,14 +22,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         const data = response.data;
         if(data?.success){
           const {data : info} = data;
-          // toast.update(id, { render: data?.message || "User information fetched successfully", type: "success", isLoading: false,autoClose: 5000 });
+          // toast.update(id, { render: data?.message || "User information fetched successfully", type: "success", isLoading: false,autoClose: 2000 });
           setUser({username: info.username, email: info.email});
         }else{
-          // toast.update(id, { render: data?.message || "Something went wrong", type: "error", isLoading: false, autoClose: 5000});
+          // toast.update(id, { render: data?.message || "Something went wrong", type: "error", isLoading: false, autoClose: 2000});
           console.error("Error authenticating user information", data?.message);
         }
       } catch (error:any) {
-        // toast.update(id, { render: error?.response?.data?.message || "Something went wrong", type: "error", isLoading: false, autoClose: 5000});
+        // toast.update(id, { render: error?.response?.data?.message || "Something went wrong", type: "error", isLoading: false, autoClose: 2000});
         console.error('Error authenticating user information:', error);
       } finally {
         setLoading(false);

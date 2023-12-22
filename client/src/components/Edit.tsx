@@ -36,7 +36,7 @@ const Edit = () => {
             render: data?.message || "Todo fetched successfully",
             type: "success",
             isLoading: false,
-            autoClose: 5000,
+            autoClose: 2000,
           });
           setTodo({
             title: info.title,
@@ -50,7 +50,7 @@ const Edit = () => {
             render: data?.message || "Something went wrong",
             type: "error",
             isLoading: false,
-            autoClose: 5000,
+            autoClose: 2000,
           });
           console.error("Error fetching user todos", data?.message);
         }
@@ -59,7 +59,7 @@ const Edit = () => {
           render: error?.response?.data?.message || "Something went wrong",
           type: "error",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         console.error("Todos failed:", error);
       }
@@ -81,7 +81,7 @@ const Edit = () => {
           render: data?.message || "Todo updated successfully",
           type: "success",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         // navigating after 2sec to home page
         setTimeout(() => {
@@ -92,7 +92,7 @@ const Edit = () => {
           render: data?.message || "Something went wrong",
           type: "error",
           isLoading: false,
-          autoClose: 5000,
+          autoClose: 2000,
         });
         console.error("Error updating todo", data?.message);
       }
@@ -101,7 +101,7 @@ const Edit = () => {
         render: error?.response?.data?.message || "Something went wrong",
         type: "error",
         isLoading: false,
-        autoClose: 5000,
+        autoClose: 2000,
       });
       console.error("Todos Save failed:", error);
     }

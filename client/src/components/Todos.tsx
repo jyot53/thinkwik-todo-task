@@ -27,7 +27,7 @@ const Todos = () => {
                         render: data?.message || "Todos fetched successfully",
                         type: "success",
                         isLoading: false,
-                        autoClose: 5000,
+                        autoClose: 2000,
                     });
                     if(info && info.length){
                         info = info.map((todo:any) => (
@@ -46,7 +46,7 @@ const Todos = () => {
                         render: data?.message || "Something went wrong",
                         type: "error",
                         isLoading: false,
-                        autoClose: 5000,
+                        autoClose: 2000,
                     });
                     console.error("Error fetching user todos", data?.message);
                 }
@@ -55,7 +55,7 @@ const Todos = () => {
                     render: error?.response?.data?.message || "Something went wrong",
                     type: "error",
                     isLoading: false,
-                    autoClose: 5000,
+                    autoClose: 2000,
                 });
                 console.error("Todos failed:", error);
             } finally{
