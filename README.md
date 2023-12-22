@@ -65,3 +65,7 @@ This MERN (MongoDB, ExpressJS, ReactJS, NodeJS) stack application is organized i
   "username":"temp123",
   "password":"temp123"
 }
+
+## Take Care 
+If the Frontend port is running other than 3000, update then route in the cors whitelist on server side (server.js)
+If the backend port is running on other than 8000, update the route in proxy in package.json file
