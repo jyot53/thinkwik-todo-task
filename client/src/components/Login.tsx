@@ -74,30 +74,56 @@ const Login = () => {
   }, [user, navigate]);
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div style={{
+        padding:'2rem',
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'center',
+        alignItems:'center',
+        gap:'2rem'
+    }}>
+      <h2>Login Here!!!</h2>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleLogin}
       >
         <Form>
-          <div>
+          <div style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }}>
             <label htmlFor="email">Email:</label>
             <Field type="email" id="email" name="email" />
-            <ErrorMessage name="email" component="div" />
+            <ErrorMessage name="email" component="div" className="error-message"  />
           </div>
 
-          <div>
+          <div style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }}>
             <label htmlFor="password">Password:</label>
             <Field type="password" id="password" name="password" />
-            <ErrorMessage name="password" component="div" />
+            <ErrorMessage name="password" component="div" className="error-message"  />
+          </div>
+          <div style={{
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center",
+            gap:"2rem"
+          }}>
+            <button style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }} type="submit">Login</button>
+            <button style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }} onClick={() => navigate('/register')}>Don't have an account?</button>
           </div>
 
-          <button type="submit">Login</button>
         </Form>
       </Formik>
-      <button onClick={() => navigate('/register')}>Don't have an account?</button>
     </div>
   );
 };

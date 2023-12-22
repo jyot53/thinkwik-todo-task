@@ -73,8 +73,15 @@ const Register = () => {
   }, [user, navigate]);
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div style={{
+        padding:'2rem',
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'center',
+        alignItems:'center',
+        gap:'2rem'
+    }}>
+      <h2>Register Here!!!</h2>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -84,25 +91,31 @@ const Register = () => {
           <div>
             <label htmlFor="username">Username:</label>
             <Field type="text" id="username" name="username" />
-            <ErrorMessage name="username" component="div" />
+            <ErrorMessage name="username" component="div" className="error-message"  />
           </div>
 
           <div>
             <label htmlFor="email">Email:</label>
             <Field type="email" id="email" name="email" />
-            <ErrorMessage name="email" component="div" />
+            <ErrorMessage name="email" component="div" className="error-message"  />
           </div>
 
           <div>
             <label htmlFor="password">Password:</label>
             <Field type="password" id="password" name="password" />
-            <ErrorMessage name="password" component="div" />
+            <ErrorMessage name="password" component="div" className="error-message"  />
           </div>
 
-          <button type="submit">Register</button>
+          <button style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }} type="submit">Register</button>
         </Form>
       </Formik>
-      <button onClick={() => navigate('/login')}>Already have an account?</button>
+      <button style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }} onClick={() => navigate('/login')}>Already have an account?</button>
     </div>
   );
 };

@@ -88,8 +88,14 @@ const SingleTodo = ({ todo }: { todo: Todo }) => {
         justifyContent:"center",
         gap:"2rem"
       }}>
-        <button onClick={onTodoDelete}>Delete</button>
-        <button onClick={onTodoEdit}>Edit</button>
+        <button style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }} onClick={onTodoDelete}>Delete</button>
+        <button style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }} onClick={onTodoEdit}>Edit</button>
       </div>
     </div>
   );

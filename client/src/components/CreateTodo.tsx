@@ -102,7 +102,10 @@ const CreateTodo = () => {
             <ErrorMessage name="dueDate" component="div" />
           </div>
 
-          <button type="submit">Save Changes</button>
+          <button style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }} type="submit">Save Changes</button>
         </Form>
       </Formik>
       </>

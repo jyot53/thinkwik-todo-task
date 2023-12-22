@@ -61,9 +61,9 @@ This MERN (MongoDB, ExpressJS, ReactJS, NodeJS) stack application is organized i
 
 ## Sample User Information
 {
-  "email":"temp123@gmail.com",
-  "username":"temp123",
-  "password":"temp123"
+  "email":"jyotsoni0053@gmail.com",
+  "username":"jyot53",
+  "password":"jyotsoni53"
 }
 
 ## Take Care 

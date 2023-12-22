@@ -57,7 +57,10 @@ export const Home = () => {
             justifyContent:"space-around",
         }}>
             <h1>Welcome {user?.username} to the todos app!!!</h1>
-            <button onClick={onLogout}>Logout</button>
+            <button style={{
+            margin:'1rem',
+            padding:'0.5rem'
+          }} onClick={onLogout}>Logout</button>
         </div>
         <Todos/>
     </div>
